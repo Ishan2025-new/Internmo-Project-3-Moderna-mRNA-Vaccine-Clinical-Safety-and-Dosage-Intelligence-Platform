@@ -87,19 +87,19 @@ def save_report_artifacts(report: ClinicalSafetyReport, output_prefix: str="samp
 
     # Save Markdown
     md_content = f"""
-    # Clinical Safety Report
+# Clinical Safety Report
 
-    **Eligible For Vaccine:** `{report.Eligible_For_Vaccine}`  
-    **Recommended Dose:** `{report.Recommended_Dose_mg}`
+**Eligible For Vaccine:** `{report.Eligible_For_Vaccine}`  
+**Recommended Dose:** `{report.Recommended_Dose_mg}`
 
-    ## Clinical Reasoning
-    {chr(10).join([f"- {step}" for step in report.Reasoning_Steps])}
+## Clinical Reasoning
+{chr(10).join([f"- {step}" for step in report.Reasoning_Steps])}
 
-    ## Cited Safety Warnings
-    {chr(10).join([f"> {warning}" for warning in report.FDA_Safety_Warnings_Cited])}
+## Cited Safety Warnings
+{chr(10).join([f"> {warning}" for warning in report.FDA_Safety_Warnings_Cited])}
 
-    ---
-    *Disclaimer: {report.Disclaimer}*
+---
+*Disclaimer: {report.Disclaimer}*
     """
 
     with open(md_path, 'w', encoding='utf-8') as f:
